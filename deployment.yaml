@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-management-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: inventory-management-system
+  template:
+    metadata:
+      labels:
+        app: inventory-management-system
+    spec:
+      containers:
+      - name: inventory-management-system
+        image: 14ujjwal32/latestapp
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DB_CONNECTION
+          value: mysql
+        - name: DB_HOST
+          value: mydb.ctmngrvsqywk.ap-south-1.rds.amazonaws.com
+        - name: DB_PORT
+          value: "3306"
+        - name: DB_DATABASE
+          value: mydb
+        - name: DB_USERNAME
+          value: mydatabase
+        - name: DB_PASSWORD
+          value: data1234
